@@ -1,6 +1,6 @@
 var droptankF16 = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/370_gal_drop_tank.glb"
 var su27airbrake = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/su-27_airbrake.glb"
-var condensationCones = ""
+var condensationCones = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones.glb"
 var machCone = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/shockcone.glb"
 var parachute = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/parachute-proper.glb"
 var rainEffect = "https://geo-fs.com/models/precipitations/rain.gltf"
@@ -63,6 +63,20 @@ geofs.debug.loadSu27Airbrake = function() {
 	    throw("Airbrake loading error. " + e)
     }
 };
+geofs.debug.createConCones = function() {
+   geofs.debug.conCone = {};
+	geofs.debug.conCone.model = new geofs.api.Model(condensationCones)
+}
+geofs.debug.loadConCones = function() {
+   geofs.debug.conCone || geofs.debug.createConCones()
+	try {
+        var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([0, 0, 0], geofs.aircraft.instance.llaLocation)),
+            d = M33.getOrientation(geofs.aircraft.instance.object3d._rotation);
+        geofs.debug.conCone.model.setPositionOrientationAndScale(c, d);
+    } catch (e) {
+	    throw("Condensation cone loading error. " + e)
+    }
+};
 geofs.debug.update = function (a) {
     geofs.debug.fps = exponentialSmoothing("fps", 1e3 / a).toPrecision(2);
     if (geofs.debugOn) {
@@ -103,6 +117,9 @@ geofs.debug.loadParachute()
 	 }
   if (geofs.debug.isSu27 == 1 && geofs.animation.values.airbrakesTarget > 0) {
     geofs.debug.loadSu27Airbrake()
+  }
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60) {
+    geofs.debug.loadConCones()
   }
 };
 
