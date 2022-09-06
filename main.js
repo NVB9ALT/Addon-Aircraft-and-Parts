@@ -1,5 +1,4 @@
 var droptankF16 = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/370_gal_drop_tank.glb"
-var test1 = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/cockpitpanel__1_.glb"
 var su27airbrake = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/su-27_airbrake.glb"
 var condensationCones = ""
 var machCone = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/shockcone.glb"
