@@ -6,6 +6,7 @@ var machCone = "https://142420819-645052386429616373.preview.editmysite.com/uplo
 var parachute = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/parachute-proper.glb"
 var rainEffect = "https://geo-fs.com/models/precipitations/rain.gltf"
 geofs.debug.isSu27 = new Boolean(0)
+geofs.debug.su27Instruments = new Boolean(0)
 //see what M33.getOrientation(geofs.aircraft.instance.object3d._rotation) returns
 geofs.debug.createF16Tank = function() {
    geofs.debug.F16Tank = {};
@@ -122,7 +123,8 @@ geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-/*geofs.aircraft.instance.setup.instruments = {
+if (geofs.debug.su27Instruments = 0) {
+geofs.aircraft.instance.setup.instruments = {
         "cdi": "",
         "compass": "",
         "airspeedSupersonic": "",
@@ -135,14 +137,17 @@ geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
 		"flaps": "",
 		"spoilers": ""
 }
-instruments.init(geofs.aircraft.instance.setup.instruments)*/
+instruments.init(geofs.aircraft.instance.setup.instruments)
+geofs.debug.su27Instruments = 1
+}
 if (geofs.animation.values.airbrakesTarget > 0) {
-   geofs.aircraft.instance.definition.dragFactor = 10
+   geofs.aircraft.instance.definition.dragFactor = 7.5
 } else {
    geofs.aircraft.instance.definition.dragFactor = 1.7
 }
    } else {
 geofs.debug.isSu27 = 0
+geofs.debug.su27Instruments = 0
 	}
 if (geofs.aircraft.instance.id == 18 && geofs.debug.isSu27 == 0 && geofs.aircraft.instance.definition.parts[46].animations[0].ratio == 0.069) {
 geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
