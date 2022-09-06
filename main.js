@@ -122,7 +122,7 @@ geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-if (geofs.debug.su27Instruments = 0) {
+if (geofs.debug.su27Instruments == 0) {
 geofs.aircraft.instance.setup.instruments = {
         "cdi": "",
         "compass": "",
