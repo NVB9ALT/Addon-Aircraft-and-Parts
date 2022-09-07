@@ -68,7 +68,7 @@ geofs.debug.createConConesLarge = function() {
    geofs.debug.conConeLarge = {};
 	geofs.debug.conConeLarge.model = new geofs.api.Model(condensationConesLarge)
 }
-geofs.debug.loadConCones = function() {
+geofs.debug.loadConConesLarge = function() {
    geofs.debug.conConeLarge || geofs.debug.createConConesLarge()
 	try {
         var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([0, 0, 0], geofs.aircraft.instance.llaLocation)),
