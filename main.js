@@ -2,6 +2,7 @@ var droptankF16 = "https://142420819-645052386429616373.preview.editmysite.com/u
 var su27airbrake = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/su-27_airbrake.glb"
 var condensationConesLarge = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones.glb"
 var condensationConesSmall = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones2.glb"
+//"glows" too much
 var machCone = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/shockcone.glb"
 var parachute = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/parachute-proper.glb"
 var rainEffect = "https://geo-fs.com/models/precipitations/rain.gltf"
@@ -116,10 +117,6 @@ geofs.debug.update = function (a) {
         geofs.debug.placingObjectId &&
             $(".geofs-debugObjectLlaHtr").text(geofs.objects.getLla(geofs.debug.placingObjectId) + " " + geofs.objects.getHtr(geofs.debug.placingObjectId) + " " + geofs.objects.getScale(geofs.debug.placingObjectId));
     }
-    //this works
-  if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364) {
-	 geofs.debug.loadMachCone()
-  }
   if (geofs.aircraft.instance.id == 7) {
      geofs.debug.loadF16Tank()
   }
@@ -133,10 +130,14 @@ geofs.debug.loadParachute()
   if (geofs.debug.isSu27 == 1 && geofs.animation.values.airbrakesTarget > 0) {
     geofs.debug.loadSu27Airbrake()
   }
+  
+  //toggle option (enabled by default)
+  if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364) {
+	 geofs.debug.loadMachCone()
+  }
   if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60) {
     geofs.debug.loadConConesLarge()
   }
-  //doesn't work?
   if (geofs.aircraft.instance.id == 7 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60) {
     geofs.debug.loadConConesSmall()
   }
