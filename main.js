@@ -65,6 +65,8 @@ geofs.debug.loadSu27Airbrake = function() {
 	    throw("Airbrake loading error. " + e)
     }
 };
+//use math.random() to rotate and translate these (put some life into them)
+//(Math.floor(Math.random() * 5) * 0.05)
 geofs.debug.createConConesLarge = function() {
    geofs.debug.conConeLarge = {};
 	geofs.debug.conConeLarge.model = new geofs.api.Model(condensationConesLarge)
@@ -72,7 +74,7 @@ geofs.debug.createConConesLarge = function() {
 geofs.debug.loadConConesLarge = function() {
    geofs.debug.conConeLarge || geofs.debug.createConConesLarge()
 	try {
-        var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([0, 0, 0], geofs.aircraft.instance.llaLocation)),
+        var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([Math.floor(Math.random() * 2) * 0.05, Math.floor(Math.random() * 2) * 0.05, Math.floor(Math.random() * 2) * 0.05], geofs.aircraft.instance.llaLocation)),
             d = M33.getOrientation(geofs.aircraft.instance.object3d._rotation);
         geofs.debug.conConeLarge.model.setPositionOrientationAndScale(c, d);
     } catch (e) {
@@ -86,7 +88,7 @@ geofs.debug.createConConesSmall = function() {
 geofs.debug.loadConConesSmall = function() {
    geofs.debug.conConeSmall || geofs.debug.createConConesSmall()
 	try {
-        var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([0, 0, 0], geofs.aircraft.instance.llaLocation)),
+        var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([Math.floor(Math.random() * 2) * 0.05, Math.floor(Math.random() * 2) * 0.05, Math.floor(Math.random() * 2) * 0.05], geofs.aircraft.instance.llaLocation)),
             d = M33.getOrientation(geofs.aircraft.instance.object3d._rotation);
         geofs.debug.conConeSmall.model.setPositionOrientationAndScale(c, d);
     } catch (e) {
