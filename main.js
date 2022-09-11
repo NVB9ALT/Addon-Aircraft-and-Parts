@@ -1,3 +1,25 @@
+geofs.condensation = {};
+let cons = true;
+geofs.condensation.update = function() {
+  if (cons == true) {
+    cons = false;
+    toggleC.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded");
+  } else {
+    cons = true;
+    toggleC.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded is-checked")
+  }
+};
+let elementSel = document.getElementsByClassName('geofs-preference-list')[0].getElementsByClassName('geofs-advanced')[0].getElementsByClassName('geofs-stopMousePropagation')[0];
+let toggleC = document.createElement("label");
+    toggleC.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded");
+    toggleC.setAttribute("for", "condensation");
+    toggleC.setAttribute("id", "condensation");
+    toggleC.setAttribute("tabindex", "0");
+    toggleC.setAttribute("dataUpgraded", ",MaterialSwitch,MaterialRipple");
+    toggleC.innerHTML = '<input type="checkbox" id="condensation" class="mdl-switch__input" data-gespref="geofs.condensation.preference"><span class="mdl-switch__label">Condensation effects</span>';
+elementSel.appendChild(toggleC);
+toggleC.addEventListener("click", geofs.condensation.update);
+
 var droptankF16 = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/370_gal_drop_tank.glb"
 var su27airbrake = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/su-27_airbrake.glb"
 var condensationConesLarge = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones.glb"
@@ -29,6 +51,7 @@ geofs.debug.createMachCone = function() {
 geofs.debug.loadMachCone = function() {
    geofs.debug.machCone || geofs.debug.createMachCone()
 	try {
+	     geofs.debug.machCone.model._model.color.alpha = 0.9
         var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([0, 0, 0], geofs.aircraft.instance.llaLocation)),
             d = M33.getOrientation(geofs.aircraft.instance.object3d._rotation);
         geofs.debug.machCone.model.setPositionOrientationAndScale(c, d);
@@ -65,8 +88,6 @@ geofs.debug.loadSu27Airbrake = function() {
 	    throw("Airbrake loading error. " + e)
     }
 };
-//use math.random() to rotate and translate these (put some life into them)
-//(Math.floor(Math.random() * 5) * 0.05)
 geofs.debug.createConConesLarge = function() {
    geofs.debug.conConeLarge = {};
 	geofs.debug.conConeLarge.model = new geofs.api.Model(condensationConesLarge)
@@ -127,25 +148,31 @@ geofs.debug.update = function (a) {
   if (geofs.animation.values.airbrakesTarget > 0 && geofs.animation.values.kias >= 10 && geofs.animation.values.kias <= 200) {
 geofs.debug.loadParachute()
 //increase drag a lot without having it increment (somehow)
+//separate function for each aircraft? would definitely be doable
   }
 	 }
   if (geofs.debug.isSu27 == 1 && geofs.animation.values.airbrakesTarget > 0) {
     geofs.debug.loadSu27Airbrake()
   }
   
-  //toggle option (enabled by default)
-  if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364) {
+  if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364 && cons == true) {
 	 geofs.debug.loadMachCone()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
     geofs.debug.loadConConesLarge()
   }
-  if (geofs.aircraft.instance.id == 7 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60) {
+  if (geofs.aircraft.instance.id == 7 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
+    geofs.debug.loadConConesSmall()
+  }
+  if (geofs.aircraft.instance.id == 2857 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
     geofs.debug.loadConConesSmall()
   }
 };
 
 
+//New menu system: make a new button instead of a livery dropdown.
+
+//MINOR AIRCRAFT VARIATIONS:
 //- Su-35 -> Su-27
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
    var elemName = e.outerText;
