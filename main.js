@@ -190,6 +190,23 @@ var condensationConesSmall = "https://142420819-645052386429616373.preview.editm
 var machCone = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/shockcone.glb"
 var parachute = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/parachute-proper.glb"
 var rainEffect = "https://geo-fs.com/models/precipitations/rain.gltf"
+var c182 = "https://geo-fs.com/models/aircraft/generics/c182/multiplayer.glb"
+
+geofs.debug.createC182 = function() {
+   geofs.debug.C182 = {};
+	geofs.debug.C182.model = new geofs.api.Model(c182)
+}
+geofs.debug.loadC182 = function() {
+   geofs.debug.C182 || geofs.debug.createC182()
+	try {
+        var c = V3.add(geofs.aircraft.instance.llaLocation, xyz2lla([0, 0, -0.2], geofs.aircraft.instance.llaLocation)),
+            d = M33.getOrientation(geofs.aircraft.instance.object3d._rotation);
+        geofs.debug.C182.model.setPositionOrientationAndScale(c, d);
+    } catch (e) {
+	    throw("C182 loading error. " + e)
+    }
+};
+
 geofs.debug.isSu27 = new Boolean(0)
 geofs.debug.su27Instruments = new Boolean(0)
 geofs.debug.createF16Tank = function() {
@@ -311,6 +328,9 @@ geofs.debug.update = function (a) {
 geofs.debug.loadParachute()
 //increase drag a lot without having it increment (somehow)
 //separate function for each aircraft? would definitely be doable
+geofs.aircraft.instance.definition.dragFactor = 10
+  } else {
+geofs.aircraft.instance.definition.dragFactor = 0.5
   }
 	 }
   if (geofs.debug.isSu27 == 1 && geofs.animation.values.airbrakesTarget > 0) {
@@ -329,7 +349,14 @@ geofs.debug.loadParachute()
   if (geofs.aircraft.instance.id == 2857 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
     geofs.debug.loadConConesSmall()
   }
+  if (geofs.aircraft.instance.id == 2) {
+    geofs.debug.loadC182()
+	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
+	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = "-1"
+  }
 };
+
+//New afterburner model?
 
 
 //MINOR AIRCRAFT VARIATIONS:
@@ -443,7 +470,7 @@ geofs.debug.hasHMD = 1
 }
 f22hmdInterval = setInterval(function(){runF22HMD()},100)
 //Su-33 (carrier-capable, add canards)
-//Add better cockpit to F-15C
+//Add cockpit texture to F-15C
 
 //Properly fix F-14 spin glitch problem
 /*
@@ -457,10 +484,13 @@ geofs.aircraft.instance.object3d.model._model._shadows = 0
    //geofs.debug.loadE7Antenna()
 
 //FULL-FLEDGED ADDON AIRCRAFT:
-//Cessna 172 -> Cessna 182T (similar to the Super Cub, maybe also stretch the 3d model slightly. Add G1000 PFD.)
-//   https://geo-fs.com/models/aircraft/generics/c182/multiplayer.glb
+//Cessna 172 -> Cessna 182T (similar to the Super Cub. Add G1000 PFD.)
+//   geofs.debug.loadC182()
 //Mirage -> Rafale
 //Su-35 -> F/A-18C (using HARV FM)
+   //F-16 sounds
+	//Afterburner model
+	//Credit to this guy: https://sketchfab.com/cs09736
 geofs.addonAircraft.runFA18 = function(){
    ui.notification.show("This aircraft has not been added yet. The button is a test.")
 }
