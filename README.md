@@ -9,6 +9,6 @@ CURRENT FEATURES AND NOTES:
 - Drop tank for the F-16
 - F-16 Block 60 (more powerful engine)
 - F-16, Su-35 and Su-27 LERX condensation
-- Testing brake parachute for the F-16 (doesn't work currently)
+- F-16 brake parachute
 - Shock cone at transonic speeds
 - Toggle switch for the condensation effects (on by default)
