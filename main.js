@@ -1,3 +1,164 @@
+var hmdIsActive = new Boolean(0);
+geofs.animation.values.hmdShow = null;
+      geofs.debug.hasHMD = null;
+//this is basically the 2.9 HUD, but without the attitude display.
+instruments.definitions.helmetMountedDisplay = {
+"overlay": {
+          "url": "images/instruments/hud/frame.png",
+          "size": {"x": 400, "y": 400},
+          "anchor": {"x": 200, "y": 200},
+          "position": {"x": window.innerWidth/2 + 200, "y": window.innerHeight/2 + 175},
+          "drawOrder": 1,
+          "rescale": true,
+          "rescalePosition": true,
+          "overlays": [
+          {
+            "animations": [
+              {
+                "type": "translateY",
+                "value": "kias",
+                "ratio": 2.1,
+                "offset": 10,
+                "min": 0,
+                "max": 1200
+              }
+            ],
+            "url": "images/instruments/hud/kias.png",
+            "anchor": {"x": 0, "y": 100},
+            "size": {"x": 80, "y": null},
+            "position": {"x": -210, "y": 20},
+            "iconFrame": {"x": 40, "y": 160},
+            "drawOrder": 1
+          },
+          {
+            "animations": [
+              {
+                "type": "translateY",
+                "value": "altThousands",
+                "ratio": 0.2385,
+                "offset": 280,
+                "min": 0,
+                "max": 100000
+              }
+            ],
+            "url": "images/instruments/hud/altitude.png",
+            "anchor": {"x": 0, "y": 0},
+            "size": {"x": 50, "y": null},
+            "position": {"x": 170, "y": -150},
+            "iconFrame": {"x": 32, "y": 170},
+            "drawOrder": 1
+          },
+          {
+            "animations": [
+              {
+                "type": "translateY",
+                "value": "altThousands",
+                "ratio": 0.238,
+                "offset": 95,
+                "min": 0,
+                "max": 100000
+              },
+              {
+                "type": "translateX",
+                "value": "altTensShift",
+                "ratio": -22.7,
+                "min": 0,
+                "max": 100000
+              }
+            ],
+            "name": "altten",
+            "url": "images/instruments/hud/altitudetens.png",
+            "anchor": {"x": 0, "y": 0},
+            "size": {"x": 334, "y": 200},
+            "position": {"x": 155, "y": -150},
+            "iconFrame": {"x": 15, "y": 170},
+            "drawOrder": 1
+          },
+          {
+            "animations": [
+              {
+                "type": "translateX",
+                "value": "heading360",
+                "ratio": -2.64,
+                "offset": 12
+              }
+            ],
+            "url": "images/instruments/hud/compass.png",
+            "anchor": {"x": 0, "y": 0},
+            "size": {"x": 2000, "y": null},
+            "offset": {"x": 0, "y": -10},
+            "position": {"x": -170, "y": -270},
+            "iconFrame": {"x": 200, "y": 30},
+            "drawOrder": 1
+          },
+          {
+            "animations": [
+              {
+                "type": "translateY",
+                "value": "machUnits",
+                "ratio": 23,
+                "offset": 1
+              }
+            ],
+            "url": "images/instruments/hud/digits.png",
+            "anchor": {"x": 0, "y": 0},
+            "size": {"x": 11, "y": null},
+            "position": {"x": -155, "y": -202},
+            "iconFrame": {"x": 11, "y": 23},
+            "drawOrder": 2
+          },
+          {
+            "animations": [
+              {
+                "type": "translateY",
+                "value": "machTenth",
+                "ratio": 23,
+                "offset": 1
+              }
+            ],
+            "url": "images/instruments/hud/digits.png",
+            "anchor": {"x": 0, "y": 0},
+            "size": {"x": 11, "y": null},
+            "position": {"x": -141, "y": -202},
+            "iconFrame": {"x": 11, "y": 23},
+            "drawOrder": 2
+          },
+          {
+            "animations": [
+              {
+                "type": "translateY",
+                "value": "machHundredth",
+                "ratio": 23,
+                "offset": 1
+              }
+            ],
+            "url": "images/instruments/hud/digits.png",
+            "anchor": {"x": 0, "y": 0},
+            "size": {"x": 11, "y": null},
+            "position": {"x": -131, "y": -202},
+            "iconFrame": {"x": 11, "y": 23},
+            "drawOrder": 2
+          }
+          ]
+        }
+	};
+function checkIT() {
+if (geofs.debug.hasHMD == 1) {
+if (hmdIsActive == 0) {
+geofs.aircraft.instance.setup.instruments.helmetMountedDisplay = {"animations": [{"value": "hmdShow", "type": "show", "eq": "1"}]}
+instruments.init(geofs.aircraft.instance.setup.instruments)
+hmdIsActive = 1
+};
+if (geofs.camera.definitions["cockpit"].orientations.current[0] >= 15 || geofs.camera.definitions["cockpit"].orientations.current[0] <= -15) {
+   geofs.animation.values.hmdShow = 1
+   } else {
+	geofs.animation.values.hmdShow = 0
+   }
+} else {
+   hmdIsActive = 0
+   }
+};checkITint = setInterval(function(){checkIT()},1000);
+
 geofs.condensation = {};
 let cons = true;
 geofs.condensation.update = function() {
@@ -20,11 +181,12 @@ let toggleC = document.createElement("label");
 elementSel.appendChild(toggleC);
 toggleC.addEventListener("click", geofs.condensation.update);
 
+geofs.addonAircraft = {};
+
 var droptankF16 = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/370_gal_drop_tank.glb"
 var su27airbrake = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/su-27_airbrake.glb"
 var condensationConesLarge = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones.glb"
 var condensationConesSmall = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones2.glb"
-//"glows" too much
 var machCone = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/shockcone.glb"
 var parachute = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/parachute-proper.glb"
 var rainEffect = "https://geo-fs.com/models/precipitations/rain.gltf"
@@ -170,16 +332,22 @@ geofs.debug.loadParachute()
 };
 
 
-//New menu system: make a new button instead of a livery dropdown.
-
 //MINOR AIRCRAFT VARIATIONS:
 //- Su-35 -> Su-27
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
    var elemName = e.outerText;
     if (elemName.includes("Su-35")) {
-	    e.innerHTML = '<img src="images/planes/su35.png">Sukhoi Su-35<div data-aircraft="18" data-livery="0"><img src="images/planes/su35_0.png">Akula 35</div><div data-aircraft="18" data-livery="1"><img src="images/planes/su35_1.png">Sukhoi Su-27</div><div data-aircraft="18" data-livery="2"><img src="images/planes/su35_2.png">Russia Bort 06</div><div data-aircraft="18" data-livery="3"><img src="images/planes/su35_3.png">Russia Bort 901</div><div data-aircraft="18" data-livery="4"><img src="images/planes/su35_4.png">Ho Ho Ho</div>';
+	    e.innerHTML = '<img src="images/planes/su35.png">Sukhoi Su-35 Flanker-E<div data-aircraft="18" data-livery="0"><img src="images/planes/su35_0.png">Akula 35</div><div data-aircraft="18" data-livery="2"><img src="images/planes/su35_2.png">Russia Bort 06</div><div data-aircraft="18" data-livery="3"><img src="images/planes/su35_3.png">Russia Bort 901</div><div data-aircraft="18" data-livery="4"><img src="images/planes/su35_4.png">Ho Ho Ho</div>';
     }
 });
+geofs.addonAircraft.runSu27 = function(){
+   geofs.aircraft.instance.change(18, 1)
+}
+flankerLi = document.createElement("li");
+flankerLi.innerHTML = '<div><img src="images/planes/su35_1.png">Sukhoi Su-27 Flanker</div>';
+flankerLi.addEventListener("click", geofs.addonAircraft.runSu27);
+document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(flankerLi)
+//modified texture?
 function runSu27() {
 if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 1) {
 geofs.debug.isSu27 = 1
@@ -216,7 +384,6 @@ geofs.debug.su27Instruments = 0
 	}
 if (geofs.aircraft.instance.id == 18 && geofs.debug.isSu27 == 0 && geofs.aircraft.instance.definition.parts[46].animations[0].ratio == 0.069) {
 geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
-ui.notification.show("Your spawn point has been reset to your current location (sorry)")
    }
 };
 Su27Int = setInterval(function(){runSu27()},1000)
@@ -224,9 +391,16 @@ Su27Int = setInterval(function(){runSu27()},1000)
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
    var elemName = e.outerText;
     if (elemName.includes("Piper Cub")) {
-  e.innerHTML = '<img src="images/planes/cub.png">Piper Cub<div data-aircraft="1" data-livery="0"><img src="images/planes/cub_0.png">Yellow</div><div data-aircraft="1" data-livery="1"><img src="images/planes/cub_1.png">Super Cub</div>'
+  e.innerHTML = '<img src="images/planes/cub.png">Piper Cub'
     }
 });
+geofs.addonAircraft.runSuperCub = function(){
+   geofs.aircraft.instance.change(7, 1)
+}
+cubLi = document.createElement("li");
+cubLi.innerHTML = '<div><img src="images/planes/cub_1.png">Piper Super Cub</div>';
+cubLi.addEventListener("click", geofs.addonAircraft.runSuperCub);
+document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(cubLi)
 function runSuperCub() {
 //needs flaps
 if (geofs.aircraft.instance.id == 1 && geofs.aircraft.instance.liveryId == 1) {
@@ -241,3 +415,60 @@ geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ 
 }
 };
 superCubInt = setInterval(function(){runSuperCub()},1000)
+//- F-16 Block 60 (the one with the most powerful engine) (same as the Super Cub. Include HMD.)
+geofs.debug.b60 = null;
+geofs.addonAircraft.runF16Block60 = function(){
+   geofs.aircraft.instance.change(7)
+	geofs.debug.b60 = 1
+}
+b60Li = document.createElement("li");
+b60Li.innerHTML = '<div><img src="images/planes/f16.png">F-16 Block 60</div>';
+b60Li.addEventListener("click", geofs.addonAircraft.runF16Block60);
+document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(b60Li)
+function superF16() {
+   if (geofs.debug.b60 == 1 && geofs.aircraft.instance.id == 7) {
+geofs.debug.hasHMD = 1
+geofs.aircraft.instance.engine.afterBurnerThrust = 145000
+geofs.aircraft.instance.engine.thrust = 77500
+	} else {
+geofs.debug.b60 = 0
+	}
+}
+setInterval(function(){superF16()},100)
+//F-22 HMD
+function runF22HMD() {
+   if (geofs.aircraft.instance.id == 2857) {
+geofs.debug.hasHMD = 1
+   }
+}
+f22hmdInterval = setInterval(function(){runF22HMD()},100)
+//Su-33 (carrier-capable, add canards)
+//Add better cockpit to F-15C
+
+//Properly fix F-14 spin glitch problem
+/*
+geofs.aircraft.instance.object3d.model._model.opaquePass = 1
+geofs.aircraft.instance.object3d.model._model.shadows = 0
+geofs.aircraft.instance.object3d.model._model._minimumPixelSize = 1000
+geofs.aircraft.instance.object3d.model._model._shadows = 0
+*/
+
+//Sorta inbetween: E-7 Wedgetail (tack a 3d model on top of a P-8 Poseidon and we'll be GTG)
+   //geofs.debug.loadE7Antenna()
+
+//FULL-FLEDGED ADDON AIRCRAFT:
+//Cessna 172 -> Cessna 182T (similar to the Super Cub, maybe also stretch the 3d model slightly. Add G1000 PFD.)
+//   https://geo-fs.com/models/aircraft/generics/c182/multiplayer.glb
+//Mirage -> Rafale
+//Su-35 -> F/A-18C (using HARV FM)
+geofs.addonAircraft.runFA18 = function(){
+   ui.notification.show("This aircraft has not been added yet. The button is a test.")
+}
+f18Li = document.createElement("li");
+f18Li.innerHTML = '<div><img src="https://w7.pngwing.com/pngs/871/313/png-transparent-boeing-f-a-18e-f-super-hornet-mcdonnell-douglas-f-a-18-hornet-battlefield-3-rogerson-aircraft-corporation-airplane-boeing-767-video-game-fighter-aircraft-airplane.png">F/A-18C Hornet</div>';
+f18Li.addEventListener("click", geofs.addonAircraft.runFA18);
+document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(f18Li)
+//Alphajet -> Harrier
+//PC-7 -> PC-9???
+//Concorde -> Tu-144
+//   https://geo-fs.com/models/aircraft/generics/c25a/multiplayer.glb
