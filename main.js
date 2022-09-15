@@ -385,10 +385,10 @@ geofs.aircraft.instance.definition.dragFactor = 0.5
   if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364 && cons == true) {
 	 geofs.debug.loadMachCone()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.aircraft.instance.id != 4) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.aircraft.instance.liveryId != 4) {
     geofs.debug.loadConConesLarge()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.aircraft.instance.id == 4) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.aircraft.instance.liveryId == 4) {
     geofs.debug.loadConConesSmall()
   }
   if (geofs.aircraft.instance.id == 7 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
@@ -402,6 +402,7 @@ geofs.aircraft.instance.definition.dragFactor = 0.5
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
   }
+  //needs cockpit
   if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.gearTarget == 0) {
     geofs.debug.loadF18GearDown()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
