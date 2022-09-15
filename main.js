@@ -400,17 +400,21 @@ geofs.aircraft.instance.definition.dragFactor = 0.5
   if (geofs.aircraft.instance.id == 2 && geofs.camera.currentModeName != "cockpit") {
     geofs.debug.loadC182()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
-	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = "-1"
+	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
   }
   if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.gearTarget == 0) {
     geofs.debug.loadF18GearDown()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
-	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = "-1"
+	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
+	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
+	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
   }
   if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.gearTarget == 1) {
     geofs.debug.loadF18GearUp()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
-	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = "-1"
+	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
+	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
+	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
   }
   if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.rpm >= 9100) {
     geofs.debug.loadF18AB()
