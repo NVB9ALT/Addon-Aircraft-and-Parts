@@ -385,10 +385,10 @@ geofs.aircraft.instance.definition.dragFactor = 0.5
   if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364 && cons == true) {
 	 geofs.debug.loadMachCone()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.aircraft.instance.liveryId != 4) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.debug.isFA18 != 1 ) {
     geofs.debug.loadConConesLarge()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.aircraft.instance.liveryId == 4) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.debug.isFA18 == 1 ) {
     geofs.debug.loadConConesSmall()
   }
   if (geofs.aircraft.instance.id == 7 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
@@ -403,21 +403,21 @@ geofs.aircraft.instance.definition.dragFactor = 0.5
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
   }
   //needs cockpit
-  if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.gearTarget == 0) {
+  if (geofs.debug.isFA18 == 1 && geofs.animation.values.gearTarget == 0) {
     geofs.debug.loadF18GearDown()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
 	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
 	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.gearTarget == 1) {
+  if (geofs.debug.isFA18 == 1 && geofs.animation.values.gearTarget == 1) {
     geofs.debug.loadF18GearUp()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
 	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
 	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4 && geofs.animation.values.rpm >= 9100) {
+  if (geofs.debug.isFA18 == 1 && geofs.animation.values.rpm >= 9100) {
     geofs.debug.loadF18AB()
   }
 };
@@ -478,6 +478,10 @@ geofs.debug.su27Instruments = 0
 if (geofs.aircraft.instance.id == 18 && geofs.debug.isSu27 == 0 && geofs.aircraft.instance.definition.parts[46].animations[0].ratio == 0.069) {
 geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
    }
+	if (geofs.debug.isFA18 == 1) {
+geofs.debug.isFA18 = 0
+geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
+	}
 };
 Su27Int = setInterval(function(){runSu27()},1000)
 //- Piper Cub -> Piper Super Cub
@@ -555,72 +559,14 @@ geofs.aircraft.instance.object3d.model._model._shadows = 0
 //Cessna 172 -> Cessna 182T (similar to the Super Cub. Add G1000 PFD.)
 //   geofs.debug.loadC182()
 //Mirage -> Rafale
-//Su-35 -> F/A-18C (using HARV FM)
+//Su-35 -> F/A-18C
    //F-16 sounds
-	//Afterburner model
 	//Airbrake (re-use Su-27 airbrake)
 	//Credit to this guy: https://sketchfab.com/cs09736
-	//Livery ID = 4
+	//geofs.addonAircraft = {}
 geofs.addonAircraft.runFA18 = function(){
-   console.log("initiated")
-	geofs.aircraft.instance.change(18, 4)
+   console.log("this is very frustrating and hard for like no reason")
 }
-function checkFA18() {
-   if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 4) {
-console.log("running")
-setTimeout(() => {
-//removing the thrust vectoring
-geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
-geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
-geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
-geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-//increasing the LERX area
-geofs.aircraft.instance.definition.parts[2].area = 25
-//making the LERX stall like a delta wing (bc it kinda is)
-geofs.aircraft.instance.definition.parts[2].stallIncidence = 25
-geofs.aircraft.instance.definition.parts[2].zeroLiftIncidence = 70
-//The actual wings have delayed lift loss, because the leading edge vortex streaming off the LERX
-//sticks to the wing and maintains the pressure differential
-geofs.aircraft.instance.definition.parts[3].stallIncidence = 25
-geofs.aircraft.instance.definition.parts[3].zeroLiftIncidence = 50
-geofs.aircraft.instance.definition.parts[4].stallIncidence = 25
-geofs.aircraft.instance.definition.parts[4].zeroLiftIncidence = 50
-//Tuning the stabilizer area
-geofs.aircraft.instance.definition.parts[11].area = 3
-//FBW G-prot
-geofs.aircraft.instance.definition.parts[12].animations[2] = {};
-	geofs.aircraft.instance.definition.parts[12].animations[2].type = "rotate";
-	geofs.aircraft.instance.definition.parts[12].animations[2].axis = "X";
-	geofs.aircraft.instance.definition.parts[12].animations[2].value = "accZ";
-	geofs.aircraft.instance.definition.parts[12].animations[2].ratio = -5;
-	geofs.aircraft.instance.definition.parts[12].animations[2].gt = 90;
-	geofs.aircraft.instance.definition.parts[12].animations[2].currentValue = null;
-	geofs.aircraft.instance.definition.parts[12].animations[2].rotationMethod = function(a) {
-      this._rotation = M33.rotationX(this._rotation, a)
-   };
-geofs.aircraft.instance.definition.parts[13].animations[2] = {}
-	geofs.aircraft.instance.definition.parts[13].animations[2].type = "rotate";
-	geofs.aircraft.instance.definition.parts[13].animations[2].axis = "X";
-	geofs.aircraft.instance.definition.parts[13].animations[2].value = "accZ";
-	geofs.aircraft.instance.definition.parts[13].animations[2].ratio = -5;
-	geofs.aircraft.instance.definition.parts[13].animations[2].gt = 90;
-	geofs.aircraft.instance.definition.parts[13].animations[2].currentValue = null;
-	geofs.aircraft.instance.definition.parts[13].animations[2].rotationMethod = function(a) {
-      this._rotation = M33.rotationX(this._rotation, a)
-   };
-//Adjusting engine power
-geofs.aircraft.instance.engines[0].thrust = 50000
-geofs.aircraft.instance.engines[0].afterBurnerThrust = 87000
-geofs.aircraft.instance.engines[1].thrust = 50000
-geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
-//Maintaining 1:1 TWR
-geofs.aircraft.instance.definition.mass = 17000
-//Adjusting drag to keep a top speed of Mach 1.7
-geofs.aircraft.instance.definition.dragFactor = 0.9
-},1000)
-	}
-}
-checkF18Interval = setInterval(function(){checkFA18()},100)
 f18Li = document.createElement("li");
 f18Li.innerHTML = '<div><img src="https://w7.pngwing.com/pngs/871/313/png-transparent-boeing-f-a-18e-f-super-hornet-mcdonnell-douglas-f-a-18-hornet-battlefield-3-rogerson-aircraft-corporation-airplane-boeing-767-video-game-fighter-aircraft-airplane.png">F/A-18C Hornet</div>';
 f18Li.addEventListener("click", geofs.addonAircraft.runFA18);
