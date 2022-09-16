@@ -441,6 +441,9 @@ flankerLi.innerHTML = '<div><img src="images/planes/su35_1.png">Sukhoi Su-27 Fla
 flankerLi.addEventListener("click", geofs.addonAircraft.runSu27);
 document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(flankerLi)
 //modified texture?
+//blue AB?
+//check high-altitude speed
+//reduce wing area?
 function runSu27() {
 if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 1) {
 geofs.debug.isSu27 = 1
@@ -449,6 +452,14 @@ geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
+geofs.aircraft.instance.definition.parts[3].area = 15
+geofs.aircraft.instance.definition.parts[4].area = 15
+geofs.aircraft.instance.definition.parts[2].area = 17
+geofs.aircraft.instance.engines[0].thrust = 60000
+geofs.aircraft.instance.engines[0].afterBurnerThrust = 80000
+geofs.aircraft.instance.engines[1].thrust = 60000
+geofs.aircraft.instance.engines[1].afterBurnerThrust = 80000
+geofs.aircraft.instance.definition.parts[11].area = 0.069
 if (geofs.debug.su27Instruments == 0) {
 geofs.aircraft.instance.setup.instruments = {
         "cdi": "",
@@ -469,7 +480,7 @@ geofs.debug.su27Instruments = 1
 if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 7.5
 } else {
-   geofs.aircraft.instance.definition.dragFactor = 1.7
+   geofs.aircraft.instance.definition.dragFactor = 0.5
 }
    } else {
 geofs.debug.isSu27 = 0
@@ -541,7 +552,9 @@ geofs.debug.hasHMD = 1
    }
 }
 f22hmdInterval = setInterval(function(){runF22HMD()},100)
-//Su-33 (carrier-capable, add canards)
+//Su-33 (arresting hook, bigger flaps, add canards)
+   //Arresting hook will be based on: close to a very specific LLA, gear down, less than 100 feet AGL
+	//Stronger blue Su-27 texture
 //Add cockpit texture to F-15C
 
 //Properly fix F-14 spin glitch problem
@@ -564,6 +577,7 @@ geofs.aircraft.instance.object3d.model._model._shadows = 0
 	//Airbrake (re-use Su-27 airbrake)
 	//Credit to this guy: https://sketchfab.com/cs09736
 	//geofs.addonAircraft = {}
+	//messing with animations without the 3d model rendered breaks things? test this
 geofs.addonAircraft.runFA18 = function(){
    console.log("this is very frustrating and hard for like no reason")
 }
