@@ -183,6 +183,7 @@ toggleC.addEventListener("click", geofs.condensation.update);
 
 geofs.addonAircraft = {};
 
+//base BTE on new api.model?
 var droptankF16 = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/370_gal_drop_tank.glb"
 var su27airbrake = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/su-27_airbrake.glb"
 var condensationConesLarge = "https://142420819-645052386429616373.preview.editmysite.com/uploads/1/4/2/4/142420819/concones.glb"
@@ -378,17 +379,17 @@ geofs.aircraft.instance.definition.dragFactor = 10
 geofs.aircraft.instance.definition.dragFactor = 0.5
   }
 	 }
-  if (geofs.debug.isSu27 == 1 && geofs.animation.values.airbrakesTarget > 0) {
+  if (geofs.addonAircraft.isSu27 == 1 && geofs.animation.values.airbrakesTarget > 0) {
     geofs.debug.loadSu27Airbrake()
   }
   
   if (geofs.animation.values.mach > 0.95 && geofs.animation.values.mach < 1.05 && geofs.aircraft.instance.id != 2364 && cons == true) {
 	 geofs.debug.loadMachCone()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.debug.isFA18 != 1 ) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.addonAircraft.isFA18 != 1 ) {
     geofs.debug.loadConConesLarge()
   }
-  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.debug.isFA18 == 1 ) {
+  if (geofs.aircraft.instance.id == 18 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true && geofs.addonAircraft.isFA18 == 1 ) {
     geofs.debug.loadConConesSmall()
   }
   if (geofs.aircraft.instance.id == 7 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
@@ -397,33 +398,28 @@ geofs.aircraft.instance.definition.dragFactor = 0.5
   if (geofs.aircraft.instance.id == 2857 && geofs.animation.values.kias > 100 && geofs.animation.values.accZ > 60 && cons == true) {
     geofs.debug.loadConConesSmall()
   }
-  if (geofs.aircraft.instance.id == 2 && geofs.camera.currentModeName != "cockpit") {
+  /*if (geofs.aircraft.instance.id == 2 && geofs.camera.currentModeName != "cockpit") {
     geofs.debug.loadC182()
 	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
-  }
+  }*/
   //needs cockpit
-  if (geofs.debug.isFA18 == 1 && geofs.animation.values.gearTarget == 0) {
+  if (geofs.addonAircraft.isFA18 == 1 && geofs.animation.values.gearTarget == 0) {
     geofs.debug.loadF18GearDown()
-	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
-	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
-	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
-	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
   }
-  if (geofs.debug.isFA18 == 1 && geofs.animation.values.gearTarget == 1) {
+  if (geofs.addonAircraft.isFA18 == 1 && geofs.animation.values.gearTarget == 1) {
     geofs.debug.loadF18GearUp()
-	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
-	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
-	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
-	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
   }
-  if (geofs.debug.isFA18 == 1 && geofs.animation.values.rpm >= 9100) {
+  if (geofs.addonAircraft.isFA18 == 1 && geofs.animation.values.rpm >= 9100) {
     geofs.debug.loadF18AB()
   }
+  //load cockpit for DHC-8 Q400
+  //edit emb120 cockpit in vectary
+  if (geofs.aircraft.instance.id == 247 && geofs.camera.currentModeName == "cockpit") {
+    void(0) //placeholder
+  }
 };
-
 //New afterburner model?
-
 
 //MINOR AIRCRAFT VARIATIONS:
 //- Su-35 -> Su-27
@@ -433,8 +429,10 @@ document.querySelectorAll('[data-aircraft]').forEach(function(e){
 	    e.innerHTML = '<img src="images/planes/su35.png">Sukhoi Su-35 Flanker-E<div data-aircraft="18" data-livery="0"><img src="images/planes/su35_0.png">Akula 35</div><div data-aircraft="18" data-livery="2"><img src="images/planes/su35_2.png">Russia Bort 06</div><div data-aircraft="18" data-livery="3"><img src="images/planes/su35_3.png">Russia Bort 901</div>';
     }
 });
+geofs.addonAircraft.isSu27 = null
 geofs.addonAircraft.runSu27 = function(){
    geofs.aircraft.instance.change(18, 1)
+	geofs.addonAircraft.isSu27 = 1
 }
 flankerLi = document.createElement("li");
 flankerLi.innerHTML = '<div><img src="images/planes/su35_1.png">Sukhoi Su-27 Flanker</div>';
@@ -442,24 +440,17 @@ flankerLi.addEventListener("click", geofs.addonAircraft.runSu27);
 document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(flankerLi)
 //modified texture?
 //blue AB?
-//check high-altitude speed
-//reduce wing area?
 function runSu27() {
-if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 1) {
-geofs.debug.isSu27 = 1
+if (geofs.aircraft.instance.id == 18 && geofs.debug.isSu27 == 1) {
 geofs.aircraft.instance.definition.airbrakesTravelTime = 1
 geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-geofs.aircraft.instance.definition.parts[3].area = 15
-geofs.aircraft.instance.definition.parts[4].area = 15
-geofs.aircraft.instance.definition.parts[2].area = 17
 geofs.aircraft.instance.engines[0].thrust = 60000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 80000
 geofs.aircraft.instance.engines[1].thrust = 60000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 80000
-geofs.aircraft.instance.definition.parts[11].area = 0.069
 if (geofs.debug.su27Instruments == 0) {
 geofs.aircraft.instance.setup.instruments = {
         "cdi": "",
@@ -483,18 +474,12 @@ if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 0.5
 }
    } else {
-geofs.debug.isSu27 = 0
 geofs.debug.su27Instruments = 0
+geofs.addonAircraft.isSu27 = 0
 	}
-if (geofs.aircraft.instance.id == 18 && geofs.debug.isSu27 == 0 && geofs.aircraft.instance.definition.parts[46].animations[0].ratio == 0.069) {
-geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
-   }
-	if (geofs.debug.isFA18 == 1) {
-geofs.debug.isFA18 = 0
-geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
-	}
+console.log("Su27 " + geofs.debug.isSu27)
 };
-Su27Int = setInterval(function(){runSu27()},1000)
+Su27Int = setInterval(function(){runSu27()},100)
 //- Piper Cub -> Piper Super Cub
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
    var elemName = e.outerText;
@@ -502,47 +487,47 @@ document.querySelectorAll('[data-aircraft]').forEach(function(e){
   e.innerHTML = '<img src="images/planes/cub.png">Piper Cub'
     }
 });
+geofs.addonAircraft.superCub = null;
 geofs.addonAircraft.runSuperCub = function(){
-   geofs.aircraft.instance.change(7, 1)
+   geofs.aircraft.instance.change(1)
+	geofs.addonAircraft.superCub = 1
 }
 cubLi = document.createElement("li");
-cubLi.innerHTML = '<div><img src="images/planes/cub_1.png">Piper Super Cub</div>';
+cubLi.innerHTML = '<div><img src="images/planes/cub_0.png">Piper Super Cub</div>';
 cubLi.addEventListener("click", geofs.addonAircraft.runSuperCub);
 document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(cubLi)
 function runSuperCub() {
 //needs flaps
-if (geofs.aircraft.instance.id == 1 && geofs.aircraft.instance.liveryId == 1) {
+if (geofs.aircraft.instance.id == 1 && geofs.addonAircraft.superCub == 1) {
       geofs.aircraft.instance.engine.thrust = 2250
    	geofs.aircraft.instance.definition.zeroRPMAltitude = 50000
    	geofs.aircraft.instance.definition.Vspeeds.VNE = 133
    	geofs.aircraft.instance.definition.Vspeeds.VNO = 100
 } else {
-   if (geofs.aircraft.instance.id == 1 && geofs.aircraft.instance.definition.Vspeeds.VNE == 133) {
-geofs.aircraft.instance.change(geofs.aircraft.instance.id, null, /*justReload*/ true, /*forceReset*/ false)
-	}
+   geofs.addonAircraft.superCub = 0
 }
+console.log("Cub " + geofs.addonAircraft.superCub)
 };
 superCubInt = setInterval(function(){runSuperCub()},1000)
 //- F-16 Block 60 (the one with the most powerful engine) (same as the Super Cub. Include HMD.)
-geofs.debug.b60 = null;
+geofs.addonAircraft.b60 = null;
 geofs.addonAircraft.runF16Block60 = function(){
    geofs.aircraft.instance.change(7)
-	geofs.debug.b60 = 1
-	console.log("activated")
+	geofs.addonAircraft.b60 = 1
 }
 b60Li = document.createElement("li");
 b60Li.innerHTML = '<div><img src="images/planes/f16.png">F-16 Block 60</div>';
 b60Li.addEventListener("click", geofs.addonAircraft.runF16Block60);
 document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(b60Li)
 function superF16() {
-   if (geofs.debug.b60 == 1 && geofs.aircraft.instance.id == 7) {
+   if (geofs.addonAircraft.b60 == 1 && geofs.aircraft.instance.id == 7) {
 geofs.debug.hasHMD = 1
 geofs.aircraft.instance.engine.afterBurnerThrust = 145000
 geofs.aircraft.instance.engine.thrust = 77500
-console.log("running")
 	} else {
-geofs.debug.b60 = 0
+geofs.addonAircraft.b60 = 0
 	}
+console.log("F16 " + geofs.addonAircraft.b60)
 }
 setInterval(function(){superF16()},100)
 //F-22 HMD
@@ -557,14 +542,6 @@ f22hmdInterval = setInterval(function(){runF22HMD()},100)
 	//Stronger blue Su-27 texture
 //Add cockpit texture to F-15C
 
-//Properly fix F-14 spin glitch problem
-/*
-geofs.aircraft.instance.object3d.model._model.opaquePass = 1
-geofs.aircraft.instance.object3d.model._model.shadows = 0
-geofs.aircraft.instance.object3d.model._model._minimumPixelSize = 1000
-geofs.aircraft.instance.object3d.model._model._shadows = 0
-*/
-
 //Sorta inbetween: E-7 Wedgetail (tack a 3d model on top of a P-8 Poseidon and we'll be GTG)
    //geofs.debug.loadE7Antenna()
 
@@ -572,14 +549,51 @@ geofs.aircraft.instance.object3d.model._model._shadows = 0
 //Cessna 172 -> Cessna 182T (similar to the Super Cub. Add G1000 PFD.)
 //   geofs.debug.loadC182()
 //Mirage -> Rafale
+//Mirage -> Eurofighter
 //Su-35 -> F/A-18C
    //F-16 sounds
 	//Airbrake (re-use Su-27 airbrake)
 	//Credit to this guy: https://sketchfab.com/cs09736
 	//geofs.addonAircraft = {}
-	//messing with animations without the 3d model rendered breaks things? test this
+geofs.addonAircraft.isFA18 = null;
 geofs.addonAircraft.runFA18 = function(){
-   console.log("this is very frustrating and hard for like no reason")
+   console.log("Loading")
+   geofs.aircraft.instance.change(18)
+//removing the thrust vectoring
+geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
+geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
+geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
+geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
+//increasing the LERX area
+geofs.aircraft.instance.definition.parts[2].area = 25
+//making the LERX stall like a delta wing (bc it kinda is)
+geofs.aircraft.instance.definition.parts[2].stallIncidence = 25
+geofs.aircraft.instance.definition.parts[2].zeroLiftIncidence = 70
+//The actual wings have delayed lift loss, because the leading edge vortex streaming off the LERX
+//sticks to the wing and maintains the pressure differential
+geofs.aircraft.instance.definition.parts[3].stallIncidence = 25
+geofs.aircraft.instance.definition.parts[3].zeroLiftIncidence = 50
+geofs.aircraft.instance.definition.parts[4].stallIncidence = 25
+geofs.aircraft.instance.definition.parts[4].zeroLiftIncidence = 50
+//Tuning the stabilizer area
+geofs.aircraft.instance.definition.parts[11].area = 3
+//Adjusting engine power
+geofs.aircraft.instance.engines[0].thrust = 50000
+geofs.aircraft.instance.engines[0].afterBurnerThrust = 87000
+geofs.aircraft.instance.engines[1].thrust = 50000
+geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
+//Maintaining 1:1 TWR
+geofs.aircraft.instance.definition.mass = 17000
+//Adjusting drag to keep a top speed of Mach 1.7
+geofs.aircraft.instance.definition.dragFactor = 0.9
+	setTimeout(() => {
+console.log("Running")
+	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
+	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
+	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
+	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
+geofs.addonAircraft.isFA18 = 1
+	}, 1000)
 }
 f18Li = document.createElement("li");
 f18Li.innerHTML = '<div><img src="https://w7.pngwing.com/pngs/871/313/png-transparent-boeing-f-a-18e-f-super-hornet-mcdonnell-douglas-f-a-18-hornet-battlefield-3-rogerson-aircraft-corporation-airplane-boeing-767-video-game-fighter-aircraft-airplane.png">F/A-18C Hornet</div>';
@@ -591,3 +605,4 @@ document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-li
 //PC-24 -> Cessna Citation
 //   https://geo-fs.com/models/aircraft/generics/c25a/multiplayer.glb
 //Alphajet -> A-4 Skyhawk???
+//Mig-15?
