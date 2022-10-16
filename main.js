@@ -9,7 +9,7 @@ document.querySelectorAll('[data-aircraft]').forEach(function(e){
 //multiplayer visibility?
 //adding the button
 geofs.addonAircraft.runFA18 = function(){
-   console.log("Loading F/A-18C")
+   console.log("Loading F/A-18C. Model credit to cs09736")
    geofs.aircraft.instance.change(18, 4)
 }
 f18Li = document.createElement("li");
