@@ -1,7 +1,7 @@
 # Addon-aircraft
 
-**YOU MUST RUN THE REALISM PACK BEFORE LOADING THIS ADDON,** as the function used for placing the models is in the Realism Addon's main.js.</br>
-To run the addon, copy and paste script.js into the console.
+**YOU MUST RUN THE REALISM PACK BEFORE LOADING THIS ADDON,** as the function used for placing the models is in the Realism Addon.</br>
+To run the addon, copy and paste main.js into the console.
 
 These aircraft are not animated, so features like landing gear, cockpits, and afterburner use separately loaded models that may be left behind floating in midair when toggling these features.
 
