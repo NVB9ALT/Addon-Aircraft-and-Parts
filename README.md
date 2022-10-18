@@ -1,6 +1,9 @@
 # Addon-aircraft
 
-This bookmarklet adds addon aircraft to GeoFS. These aircraft are not animated, so features like landing gear, cockpits, and afterburner use separately loaded models that may be left behind floating in midair when toggling these features.
+**YOU MUST RUN THE REALISM PACK BEFORE LOADING THIS ADDON,** as the function used for placing the models is in the Realism Addon's main.js.</br>
+To run the addon, copy and paste script.js into the console.
+
+These aircraft are not animated, so features like landing gear, cockpits, and afterburner use separately loaded models that may be left behind floating in midair when toggling these features.
 
 NOTE: it is currently under development and as such **might be broken or glitchy**.
 
