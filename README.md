@@ -8,11 +8,11 @@ These aircraft are not animated, so features like landing gear, cockpits, and af
 NOTE: it is currently under development and as such **might be broken or glitchy**.
 
 Current features:
-- F/A-18C addon aircraft. Does NOT have a tailhook currently. Will have multiplayer visibility at some point.
+- F/A-18C addon aircraft. Does NOT have a tailhook currently.
 - Sukhoi Su-27 Flanker addon aircraft. Slightly different from the Su-35 due to the inclusion of a speedbrake, lack of thrust vectoring, and weaker engines. Will probably add a proper, gauge-filled Su-27 cockpit at some point.
+- MiG-17 addon aircraft.
 
 Aircraft to be added in the future:</br>
-- Mig-17 addon aircraft. Will have multiplayer visibility.
 - Piper Super Cub addon aircraft. Will include flaps and a more powerful engine.
 - Su-33 addon aircraft. Will include folding wing animation and tailhook. (This will likely be released pretty close to the time the F/A-18C gets its tailhook).
 - E-7 Wedgetail (by request of Lachy, I think). Will be a heavier P-8 with an antenna.
