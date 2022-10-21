@@ -14,7 +14,7 @@ if (geofs.aircraft.instance.id == 2) {
 	geofs.aircraft.instance.definition.parts[7].area = 1
 	geofs.aircraft.instance.definition.parts[8].area = 0.069
 	geofs.aircraft.instance.definition.parts[9].area = 0.069
-	geofs.aircraft.instance.definition.parts[10].area = 10
+	geofs.aircraft.instance.definition.parts[10].area = 1
    //thrust and Vspeeds
 	geofs.aircraft.instance.definition.parts[19].thrust = 2000
 	geofs.aircraft.instance.definition.Vspeeds = {"VS0": 0, "VS": 0, "VFE": 0, "VNO": 70, "VNE": 120}
@@ -22,7 +22,7 @@ if (geofs.aircraft.instance.id == 2) {
 	geofs.aircraft.instance.cockpitSetup.parts[10].animations[0].ratio = 0.0069
 	geofs.aircraft.instance.cockpitSetup.parts[11].animations[0].ratio = 0.0069
 	geofs.aircraft.instance.cockpitSetup.parts[16].animations[1].threshold = -1
-	//CG adjust
+	//CG adjust (whyyyy doesn't this work?)
 	geofs.aircraft.instance.definition.parts[0].centerOfMass[1] = [0, 2, -2]
 } else {
    throw("Please switch to a Cessna 172 before running this mod")
