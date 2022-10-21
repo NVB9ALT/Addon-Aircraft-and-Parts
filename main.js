@@ -43,6 +43,25 @@ geofs.aircraft.instance.engines[0].thrust = 50000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 87000
 geofs.aircraft.instance.engines[1].thrust = 50000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
+//Stuff from aircraft-fixes.js
+   geofs.aircraft.instance.definition.parts[46].animations[2] = {};
+	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
+	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
+	geofs.aircraft.instance.definition.parts[46].animations[2].value = "roll";
+	geofs.aircraft.instance.definition.parts[46].animations[2].ratio = -10;
+	geofs.aircraft.instance.definition.parts[46].animations[2].currentValue = null;
+	geofs.aircraft.instance.definition.parts[46].animations[2].rotationMethod = function(a) {
+      this._rotation = M33.rotationZ(this._rotation, a)
+   };
+   geofs.aircraft.instance.definition.parts[51].animations[2] = {};
+	geofs.aircraft.instance.definition.parts[51].animations[2].type = "rotate";
+	geofs.aircraft.instance.definition.parts[51].animations[2].axis = "Z";
+	geofs.aircraft.instance.definition.parts[51].animations[2].value = "roll";
+	geofs.aircraft.instance.definition.parts[51].animations[2].ratio = -10;
+	geofs.aircraft.instance.definition.parts[51].animations[2].currentValue = null;
+	geofs.aircraft.instance.definition.parts[51].animations[2].rotationMethod = function(a) {
+      this._rotation = M33.rotationZ(this._rotation, a)
+   };
 //Maintaining 1:1 TWR
 geofs.aircraft.instance.definition.mass = 17000
 //Replacing the tires lol
@@ -167,6 +186,26 @@ geofs.aircraft.instance.engines[0].thrust = 60000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 80000
 geofs.aircraft.instance.engines[1].thrust = 60000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 80000
+   geofs.aircraft.instance.definition.parts[46].animations[2] = {};
+	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
+	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
+	geofs.aircraft.instance.definition.parts[46].animations[2].value = "roll";
+	geofs.aircraft.instance.definition.parts[46].animations[2].ratio = -10;
+	geofs.aircraft.instance.definition.parts[46].animations[2].currentValue = null;
+	geofs.aircraft.instance.definition.parts[46].animations[2].rotationMethod = function(a) {
+      this._rotation = M33.rotationZ(this._rotation, a)
+   };
+   geofs.aircraft.instance.definition.parts[51].animations[2] = {};
+	geofs.aircraft.instance.definition.parts[51].animations[2].type = "rotate";
+	geofs.aircraft.instance.definition.parts[51].animations[2].axis = "Z";
+	geofs.aircraft.instance.definition.parts[51].animations[2].value = "roll";
+	geofs.aircraft.instance.definition.parts[51].animations[2].ratio = -10;
+	geofs.aircraft.instance.definition.parts[51].animations[2].currentValue = null;
+	geofs.aircraft.instance.definition.parts[51].animations[2].rotationMethod = function(a) {
+      this._rotation = M33.rotationZ(this._rotation, a)
+   };
+	geofs.aircraft.instance.definition.parts[48].animations[0].gt = 9100
+	geofs.aircraft.instance.definition.parts[53].animations[0].gt = 9100
 if (geofs.debug.su27Instruments == 0) {
 geofs.aircraft.instance.setup.instruments = {
         "cdi": "",
