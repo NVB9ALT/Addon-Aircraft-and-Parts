@@ -160,6 +160,8 @@ setTimeout(() => {
    geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
 	geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
 },10000)
+   } else {
+geofs.addonAircraft.isMig17 = 0
    }
 }
 mig17Int = setInterval(function(){runMiG17()},100)
