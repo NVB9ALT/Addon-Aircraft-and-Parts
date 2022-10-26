@@ -1,7 +1,7 @@
 geofs.addonAircraft = {}
 geofs.addonAircraft.isF14A = 0
 geofs.addonAircraft.runF14A = function(){
-   console.log("Loading F-14A Tomcat")
+   console.log("Loading F-14A Tomcat. Model credit manilov.ap.")
 }
 F14ALi = document.createElement("li");
 F14ALi.innerHTML = '<div><img src="http://atlas-content-cdn.pixelsquid.com/stock-images/f-14-airplane-tomcat-fighter-jet-ENB74k2-600.jpg">Grumman F-14A Tomcat</div>';
