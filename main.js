@@ -8,7 +8,7 @@ document.querySelectorAll('[data-aircraft]').forEach(function(e){
 //-----F/A-18C Hornet-----------------------------------------------------------------------------------------------------
 //adding the button
 geofs.addonAircraft.runFA18 = function(){
-   console.log("Loading F/A-18C. Model credit to cs09736")
+   console.log("Loading F/A-18C. Model credit cs09736. Model loaded under CC Attribution Share-Alike Liscense.")
    geofs.aircraft.instance.change(18, 4)
 }
 f18Li = document.createElement("li");
@@ -130,7 +130,7 @@ checkRunHornetInterval = setInterval(function(){runHornet()},100)
 //-----Mig-17 Fresco--------------------------------------------------------------------------------------------------
 geofs.addonAircraft.isMig17 = 0
 geofs.addonAircraft.runMiG17 = function(){
-   console.log("Loading MiG-17")
+   console.log("Loading MiG-17. Model credit manilov.ap")
 }
 mig17Li = document.createElement("li");
 mig17Li.innerHTML = '<div><img src="https://finescale.com/~/media/images/workbench-reviews/2020/february-2020/fsmwb1219_zvezda_mig17_01.jpg">Mikoyan-Gurevich MiG-17 Fresco</div>';
