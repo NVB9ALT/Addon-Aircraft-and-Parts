@@ -25,12 +25,12 @@ geofs.aircraft.instance.engines[1].afterBurnerThrust = 90000
 	}
 	if (geofs.animation.values.kias > 50) {
 if (geofs.animation.values.slipball >= 1.2) { //right
-   geofs.aircraft.instance.engines[0].thrust = 5000
-	geofs.aircraft.instance.engines[0].afterBurnerThrust = 30000
-}
-if (geofs.animation.values.slipball <= -1.2) { //left
    geofs.aircraft.instance.engines[1].thrust = 5000
 	geofs.aircraft.instance.engines[1].afterBurnerThrust = 30000
+}
+if (geofs.animation.values.slipball <= -1.2) { //left
+   geofs.aircraft.instance.engines[0].thrust = 5000
+	geofs.aircraft.instance.engines[0].afterBurnerThrust = 30000
 }
 	}
 setTimeout(() => {
