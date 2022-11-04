@@ -227,6 +227,8 @@ geofs.debug.su27Instruments = 1
 }
 if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 7.5
+} else if () {
+   geofs.aircraft.instance.definition.dragFactor = 5
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.5
 }
@@ -236,3 +238,4 @@ geofs.addonAircraft.isSu27 = 0
 	}
 };
 Su27Int = setInterval(function(){runSu27()},100)
+//clearInterval(Su27Int)
