@@ -227,7 +227,7 @@ geofs.debug.su27Instruments = 1
 }
 if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 7.5
-} else if () {
+} else if (geofs.animation.values.accZ >= 60) {
    geofs.aircraft.instance.definition.dragFactor = 5
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.5
