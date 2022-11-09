@@ -17,9 +17,8 @@ Aircraft to be added in the future:</br>
 - Su-33 addon aircraft. Will include folding wing animation and tailhook. (This will likely be released pretty close to the time the F/A-18C gets its tailhook).
 - E-7 Wedgetail (by request of Lachy, I think). Will be a heavier P-8 with an antenna.
 - Eurofighter Typhoon
+- Boeing 737-200
+- Mikoyan-Gurevich MiG-21
 - Cessna Citation
 - A-4 Skyhawk
 - Tupolev Tu-144
-
-Aircraft that might be added in the future:
-- Harrier Jump Jet. Based off an in-development mod that adds VTOL to the Alphajet.
