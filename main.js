@@ -64,6 +64,14 @@ geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
    };
 //Maintaining 1:1 TWR
 geofs.aircraft.instance.definition.mass = 17000
+//Drag
+if (geofs.animation.values.airbrakesTarget > 0) {
+   geofs.aircraft.instance.definition.dragFactor = 6
+} else if (geofs.animation.values.accZ >= 60) {
+   geofs.aircraft.instance.definition.dragFactor = 5
+} else {
+   geofs.aircraft.instance.definition.dragFactor = 0.9
+}
 //Replacing the tires lol
 geofs.aircraft.instance.definition.contactProperties = {
         "wheel": {
@@ -103,11 +111,6 @@ geofs.aircraft.instance.definition.instruments.correctHUD = {
 if (geofs.f18instruments == 0) {
    instruments.init(geofs.aircraft.instance.setup.instruments)
    geofs.f18instruments = 1
-}
-if (geofs.animation.values.airbrakesTarget > 0) {
-   geofs.aircraft.instance.definition.dragFactor = 6
-} else {
-   geofs.aircraft.instance.definition.dragFactor = 0.9
 }
 setTimeout(() => {
    geofs.addonAircraft.isFA18 = 1
