@@ -72,6 +72,7 @@ if (geofs.animation.values.airbrakesTarget > 0) {
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.9
 }
+audio.soundplayer.setRate(geofs.aircraft.instance.definition.sounds[3].id, 0.5) //Sound pitch modification
 //Replacing the tires lol
 geofs.aircraft.instance.definition.contactProperties = {
         "wheel": {
