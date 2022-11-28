@@ -137,7 +137,7 @@ geofs.addonAircraft.runMiG17 = function(){
    console.log("Loading MiG-17. Model credit manilov.ap")
 }
 mig17Li = document.createElement("li");
-mig17Li.innerHTML = '<div><img src="https://finescale.com/~/media/images/workbench-reviews/2020/february-2020/fsmwb1219_zvezda_mig17_01.jpg">Mikoyan-Gurevich MiG-17 Fresco</div>';
+mig17Li.innerHTML = '<div><img src="https://finescale.com/~/media/images/workbench-reviews/2020/february-2020/fsmwb1219_zvezda_mig17_01.jpg">Mikoyan-Gurevich MiG-17 "Fresco"</div>';
 mig17Li.addEventListener("click", geofs.addonAircraft.runMiG17);
 //this works actually
 mig17Li.setAttribute("data-aircraft", 3)
