@@ -29,7 +29,7 @@ geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
    if (controls.optionalAnimatedPart.target == 1) {
 geofs.aircraft.instance.definition.parts[2].area = 30
    } else {
-geofs.aircraft.instance.definition.parts[2].area = 15
+geofs.aircraft.instance.definition.parts[2].area = 17
    }
 //making the LERX stall like a delta wing (bc it kinda is)
 geofs.aircraft.instance.definition.parts[2].stallIncidence = 25
