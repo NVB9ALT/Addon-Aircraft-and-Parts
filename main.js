@@ -25,11 +25,29 @@ geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-//increasing the LERX area and add FCS override
+//flight control system
    if (controls.optionalAnimatedPart.target == 1) {
 geofs.aircraft.instance.definition.parts[2].area = 30
+geofs.aircraft.instance.definition.parts[12].stalls = true
+geofs.aircraft.instance.definition.parts[13].stalls = true
+if (geofs.animation.values.airbrakesTarget > 0) {
+   geofs.aircraft.instance.definition.dragFactor = 6
+} else if (geofs.animation.values.accZ >= 30) {
+   geofs.aircraft.instance.definition.dragFactor = 5
+} else {
+   geofs.aircraft.instance.definition.dragFactor = 0.9
+}
    } else {
 geofs.aircraft.instance.definition.parts[2].area = 17
+geofs.aircraft.instance.definition.parts[12].stalls = false
+geofs.aircraft.instance.definition.parts[13].stalls = false
+if (geofs.animation.values.airbrakesTarget > 0) {
+   geofs.aircraft.instance.definition.dragFactor = 6
+} else if (geofs.animation.values.accZ >= 50) {
+   geofs.aircraft.instance.definition.dragFactor = 5
+} else {
+   geofs.aircraft.instance.definition.dragFactor = 0.9
+}
    }
 //making the LERX stall like a delta wing (bc it kinda is)
 geofs.aircraft.instance.definition.parts[2].stallIncidence = 25
@@ -38,10 +56,10 @@ geofs.aircraft.instance.definition.parts[2].zeroLiftIncidence = 70
 //sticks to the wing and maintains the pressure differential
 geofs.aircraft.instance.definition.parts[3].stallIncidence = 25
 geofs.aircraft.instance.definition.parts[3].zeroLiftIncidence = 50
-geofs.aircraft.instance.definition.parts[3].area = 18
+geofs.aircraft.instance.definition.parts[3].area = 15
 geofs.aircraft.instance.definition.parts[4].stallIncidence = 25
 geofs.aircraft.instance.definition.parts[4].zeroLiftIncidence = 50
-geofs.aircraft.instance.definition.parts[4].area = 18
+geofs.aircraft.instance.definition.parts[4].area = 15
 //Tuning the stabilizer area
 geofs.aircraft.instance.definition.parts[11].area = 3
 //Adjusting engine power
@@ -70,14 +88,6 @@ geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
    };
 //Maintaining 1:1 TWR
 geofs.aircraft.instance.definition.mass = 17000
-//Drag
-if (geofs.animation.values.airbrakesTarget > 0) {
-   geofs.aircraft.instance.definition.dragFactor = 6
-} else if (geofs.animation.values.accZ >= 60) {
-   geofs.aircraft.instance.definition.dragFactor = 5
-} else {
-   geofs.aircraft.instance.definition.dragFactor = 0.9
-}
 audio.soundplayer.setRate(geofs.aircraft.instance.definition.sounds[3].id, 0.5) //Sound pitch modification
 //Replacing the tires lol
 geofs.aircraft.instance.definition.contactProperties = {
