@@ -25,8 +25,12 @@ geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-//increasing the LERX area
-geofs.aircraft.instance.definition.parts[2].area = 25
+//increasing the LERX area and add FCS override
+   if (controls.optionalAnimatedPart.target = 1) {
+geofs.aircraft.instance.definition.parts[2].area = 30
+   } else {
+geofs.aircraft.instance.definition.parts[2].area = 20
+   }
 //making the LERX stall like a delta wing (bc it kinda is)
 geofs.aircraft.instance.definition.parts[2].stallIncidence = 25
 geofs.aircraft.instance.definition.parts[2].zeroLiftIncidence = 70
@@ -34,8 +38,10 @@ geofs.aircraft.instance.definition.parts[2].zeroLiftIncidence = 70
 //sticks to the wing and maintains the pressure differential
 geofs.aircraft.instance.definition.parts[3].stallIncidence = 25
 geofs.aircraft.instance.definition.parts[3].zeroLiftIncidence = 50
+geofs.aircraft.instance.definition.parts[3].area = 18
 geofs.aircraft.instance.definition.parts[4].stallIncidence = 25
 geofs.aircraft.instance.definition.parts[4].zeroLiftIncidence = 50
+geofs.aircraft.instance.definition.parts[4].area = 18
 //Tuning the stabilizer area
 geofs.aircraft.instance.definition.parts[11].area = 3
 //Adjusting engine power
