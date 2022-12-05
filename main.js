@@ -374,6 +374,8 @@ if (geofs.aircraft.instance.id == 8 && geofs.aircraft.instance.liveryId == 3) {
 	geofs.aircraft.instance.cockpitSetup.parts[0].animations[0].value = "rpm"
 	geofs.aircraft.instance.cockpitSetup.parts[0].animations[0].gt = -1
 	}
+} else {
+geofs.addonAircraft.isMSG = 0	
 }
 }
 msgInterval = setInterval(function(){runMsG()},100)
