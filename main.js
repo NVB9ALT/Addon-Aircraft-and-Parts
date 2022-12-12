@@ -256,7 +256,7 @@ if (geofs.animation.values.airbrakesTarget > 0) {
 if (controls.accessories.target == 1) {
    geofs.aircraft.instance.definition.parts[2].area = 30
 } else {
-   geofs.aircraft.instance.definition.parts[2].area = 15
+   geofs.aircraft.instance.definition.parts[2].area = 10
 }
    } else {
 geofs.debug.su27Instruments = 0
