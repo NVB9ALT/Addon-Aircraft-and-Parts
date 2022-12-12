@@ -200,6 +200,7 @@ document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-li
 function runSu27() {
 if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 1) {
 geofs.aircraft.instance.definition.airbrakesTravelTime = 1
+geofs.aircraft.instance.definition.accessoriesTravelTime = 0.1
 geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
@@ -251,6 +252,11 @@ if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 5
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.5
+}
+if (controls.accessories.target == 1) {
+   geofs.aircraft.instance.definition.parts[2].area = 30
+} else {
+   geofs.aircraft.instance.definition.parts[2].area = 15
 }
    } else {
 geofs.debug.su27Instruments = 0
