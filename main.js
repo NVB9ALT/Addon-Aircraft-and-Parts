@@ -191,7 +191,6 @@ geofs.addonAircraft.isSu27 = new Boolean(0)
 geofs.debug.su27Instruments = new Boolean(0)
 geofs.addonAircraft.runSu27 = function(){
    geofs.aircraft.instance.change(18, 1)
-	geofs.addonAircraft.isSu27 = 1
 }
 flankerLi = document.createElement("li");
 flankerLi.innerHTML = '<div><img src="images/planes/su35_1.png">Sukhoi Su-27 Flanker</div>';
@@ -199,6 +198,7 @@ flankerLi.addEventListener("click", geofs.addonAircraft.runSu27);
 document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-list")[0].appendChild(flankerLi)
 function runSu27() {
 if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId == 1) {
+geofs.addonAircraft.isSu27 = 1
 geofs.aircraft.instance.definition.airbrakesTravelTime = 1
 geofs.aircraft.instance.definition.accessoriesTravelTime = 0.1
 geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
