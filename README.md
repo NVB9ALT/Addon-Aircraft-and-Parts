@@ -5,7 +5,7 @@ To run the addon, copy and paste main.js into the console.
 
 These aircraft are not animated, so features like landing gear, cockpits, and afterburner use separately loaded models that may be left behind floating in midair when toggling these features.
 
-NOTE: it is currently under development and as such **might be broken or glitchy**.
+NOTE: some new addon aircraft **might be broken or glitchy**.
 
 Current features:
 - F/A-18C addon aircraft. Does NOT have a tailhook currently. The X key toggles the paddle switch.
@@ -14,9 +14,9 @@ Current features:
 - E-7 Wedgetail addon aircraft.
 - MiG-21 addon aircraft. X key toggles WEP/drop tank, with the tank on max power is standard AB, with the tank off max power is WEP thrust.
 - Morane-Saulnier Type G addon aircraft.
+- Lockheed F-117 addon aircraft
 
 Aircraft to be probably added in the future:</br>
-- F-117 Nighthawk
 - Piper Super Cub addon aircraft. Will include flaps and a more powerful engine.
 - Su-33 addon aircraft. Will include folding wing animation and tailhook. (This will likely be released pretty close to the time the F/A-18C gets its tailhook).
 - Eurofighter Typhoon/Dassault Rafale
