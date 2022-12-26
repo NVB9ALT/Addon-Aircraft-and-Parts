@@ -172,7 +172,9 @@ geofs.aircraft.instance.engines[0].thrust = 15000
 geofs.aircraft.instance.engines[1].thrust = 15000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 20000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 20000
+   if (geofs.animation.values.view == "cockpit") {
 geofs.aircraft.instance.cockpitSetup.parts[1].object3d.model._model.color.alpha = 0
+   }
 setTimeout(() => {
    geofs.addonAircraft.isMig17 = 1
 },5000)
