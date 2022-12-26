@@ -15,10 +15,10 @@ document.getElementsByClassName("geofs-list geofs-toggle-panel geofs-aircraft-li
 function runF14A() {
 if (geofs.aircraft.instance.id == 2581 && geofs.aircraft.instance.liveryId == 1) {
    if (geofs.animation.values.mach >= 1.75 && geofs.animation.values.slipball <= 1.2 && geofs.animation.values.slipball >= -1.2) {
-geofs.aircraft.instance.engines[0].thrust = 90000
-geofs.aircraft.instance.engines[0].afterBurnerThrust = 140000
-geofs.aircraft.instance.engines[1].thrust = 90000
-geofs.aircraft.instance.engines[1].afterBurnerThrust = 140000
+geofs.aircraft.instance.engines[0].thrust = 80000
+geofs.aircraft.instance.engines[0].afterBurnerThrust = 170000
+geofs.aircraft.instance.engines[1].thrust = 80000
+geofs.aircraft.instance.engines[1].afterBurnerThrust = 170000
    } else if (geofs.animation.values.slipball <= 1.2 && geofs.animation.values.slipball >= -1.2) {
 geofs.aircraft.instance.engines[0].thrust = 60000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 90000
