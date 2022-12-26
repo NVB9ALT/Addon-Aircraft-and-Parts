@@ -1,4 +1,4 @@
-# Addon-aircraft
+# Addon-Aircraft-and-Parts
 
 **YOU MUST RUN THE REALISM PACK BEFORE LOADING THIS ADDON,** as the function used for placing the models is in the Realism Addon.</br>
 To run the addon, copy and paste main.js into the console.
