@@ -9,8 +9,8 @@ These aircraft are not animated, so features like landing gear, cockpits, and af
 NOTE: some new addon aircraft **might be broken or glitchy**.
 
 Current features:
-- F/A-18C addon aircraft. Does NOT have a tailhook currently.
-- Sukhoi Su-27 Flanker addon aircraft. Slightly different from the Su-35 due to the inclusion of a speedbrake, lack of thrust vectoring, and weaker engines. Will probably add a proper, gauge-filled Su-27 cockpit at some point.
+- F/A-18C addon aircraft. Does NOT have a tailhook currently. Has paddle switch.
+- Sukhoi Su-27 Flanker addon aircraft. Slightly different from the Su-35 due to the inclusion of a speedbrake, lack of thrust vectoring, and weaker engines. Will probably add a proper, gauge-filled Su-27 cockpit at some point. Has Cobra button.
 - MiG-17 addon aircraft.
 - E-7 Wedgetail addon aircraft.
 - MiG-21 addon aircraft. X key toggles WEP/drop tank, with the tank on max power is standard AB, with the tank off max power is WEP thrust.
