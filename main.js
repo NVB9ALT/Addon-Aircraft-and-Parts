@@ -26,7 +26,7 @@ geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
 //flight control system
-   if (controls.optionalAnimatedPart.target == 1) {
+   if (geofs.animation.values.cobraMode == 1) {
 geofs.aircraft.instance.definition.parts[2].area = 30
 geofs.aircraft.instance.definition.parts[12].stalls = true
 geofs.aircraft.instance.definition.parts[13].stalls = true
@@ -255,7 +255,7 @@ if (geofs.animation.values.airbrakesTarget > 0) {
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.5
 }
-if (controls.accessories.target == 1) {
+if (geofs.animation.values.cobraMode == 1) {
    geofs.aircraft.instance.definition.parts[2].area = 30
 } else {
    geofs.aircraft.instance.definition.parts[2].area = 10
@@ -427,7 +427,7 @@ function runF117() {
 	geofs.aircraft.instance.definition.parts[47].animations[0].lt = -1
    geofs.aircraft.instance.definition.parts[48].animations[0].value = "rpm"
 	geofs.aircraft.instance.definition.parts[48].animations[0].lt = -1
-   geofs.aircraft.instance.definition.parts[8].area = 15
+   geofs.aircraft.instance.definition.parts[8].area = 5
 setTimeout(() => {
 	geofs.addonAircraft.isF117 = 1
 },5000)
