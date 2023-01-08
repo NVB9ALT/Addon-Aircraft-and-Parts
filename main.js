@@ -316,7 +316,7 @@ if (geofs.animation.values.kias >= 150 && geofs.animation.values.kias <= 225) {
 	geofs.aircraft.instance.definition.parts[7].area = 2
 	geofs.aircraft.instance.definition.parts[8].area = 2
 }
-if (geofs.animation.values.aoa > 15) {
+if (geofs.animation.values.aoa > 14) {
    geofs.aircraft.instance.definition.dragFactor = 6
 } else if (geofs.animation.values.aoa > 5) {
    geofs.aircraft.instance.definition.dragFactor = 3
