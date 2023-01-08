@@ -256,7 +256,7 @@ if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 0.5
 }
 if (geofs.animation.values.cobraMode == 1) {
-   geofs.aircraft.instance.definition.parts[2].area = 30
+   geofs.aircraft.instance.definition.parts[2].area = 40
 } else {
    geofs.aircraft.instance.definition.parts[2].area = 10
 }
