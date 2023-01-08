@@ -145,7 +145,7 @@ geofs.addonAircraft.isFA18 = 0
 geofs.f18instruments = 0
    }
 }
-checkRunHornetInterval = setInterval(function(){runHornet()},100)
+checkRunHornetInterval = setInterval(function(){runHornet()},10)
 
 //-----Mig-17 Fresco-----------------------------------------------------------------------------------------------------
 geofs.addonAircraft.isMig17 = 0
