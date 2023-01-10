@@ -304,17 +304,19 @@ geofs.mig21instruments = new Boolean(0)
 //clearInterval(mig21Interval)
 function runMiG21() {
 if (geofs.aircraft.instance.id == 7 && geofs.aircraft.instance.liveryId == 1) {
-	geofs.aircraft.instance.definition.parts[2].area = 7
 	geofs.aircraft.instance.definition.parts[2].zeroLiftIncidence = 90
-	geofs.aircraft.instance.definition.parts[3].area = 7
 	geofs.aircraft.instance.definition.parts[3].zeroLiftIncidence = 90
 	geofs.aircraft.instance.definition.parts[6].area = 1
 if (geofs.animation.values.kias >= 150 && geofs.animation.values.kias <= 225) {
-	geofs.aircraft.instance.definition.parts[7].area = 4
-	geofs.aircraft.instance.definition.parts[8].area = 4
+	geofs.aircraft.instance.definition.parts[7].area = 0.5
+	geofs.aircraft.instance.definition.parts[8].area = 0.5
+	geofs.aircraft.instance.definition.parts[2].area = 10
+	geofs.aircraft.instance.definition.parts[3].area = 10
 } else {
 	geofs.aircraft.instance.definition.parts[7].area = 2
 	geofs.aircraft.instance.definition.parts[8].area = 2
+	geofs.aircraft.instance.definition.parts[2].area = 7
+	geofs.aircraft.instance.definition.parts[3].area = 7
 }
 if (geofs.animation.values.aoa > 14) {
    geofs.aircraft.instance.definition.dragFactor = 6
