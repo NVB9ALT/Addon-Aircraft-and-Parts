@@ -18,10 +18,7 @@ Current features:
 - Lockheed F-117 addon aircraft
 
 Aircraft to be probably added in the future:</br>
-- Piper Super Cub addon aircraft. Will include flaps and a more powerful engine.
 - Su-33 addon aircraft. Will include folding wing animation and tailhook. (This will likely be released pretty close to the time the F/A-18C gets its tailhook).
 - Eurofighter Typhoon/Dassault Rafale
-- Boeing 737-200
 - Cessna Citation
-- A-4 Skyhawk
 - Tupolev Tu-144
