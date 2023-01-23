@@ -189,6 +189,7 @@ geofs.addonAircraft.isMig17 = 0
 mig17Int = setInterval(function(){runMiG17()},100)
 
 //-----Su-27 Flanker (the OG one)---------------------------------------------------------------------------------------
+//Sir this is a M32 rotary grenade launcher-
 geofs.addonAircraft.isSu27 = new Boolean(0)
 geofs.debug.su27Instruments = new Boolean(0)
 geofs.addonAircraft.runSu27 = function(){
