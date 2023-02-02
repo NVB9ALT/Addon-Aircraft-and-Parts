@@ -22,7 +22,6 @@ geofs.addonAircraft.distance = function (pos1, pos2) {
 //The inconsiderate CCs think people playing GeoFS on school Chromebooks have 1000 dollars to drop on a PC that can run MSFS
 //which we obviously don't
 geofs.addonAircraft.runAddonTailhook = function(){
-console.log(geofs.addonAircraft.aircraftBackup())
    geofs.addonAircraft.wireLLAs.forEach(function(e){
 if (geofs.animation.values.gearPosition == 0 && geofs.addonAircraft.landed == 0 && geofs.animation.values.groundContact == 1 && geofs.addonAircraft.distance(geofs.aircraft.instance.llaLocation, e) < 10) {
    console.log("Hooking detected")
