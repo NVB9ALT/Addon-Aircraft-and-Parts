@@ -24,7 +24,7 @@ geofs.addonAircraft.distance = function (pos1, pos2) {
 geofs.addonAircraft.runAddonTailhook = function(){
 console.log(geofs.addonAircraft.aircraftBackup())
    geofs.addonAircraft.wireLLAs.forEach(function(e){
-if (geofs.animation.values.gearPosition == 0 && geofs.addonAircraft.landed == 0 && geofs.animation.values.groundContact == 1 && geofs.addonAircraft.distance(geofs.aircraft.instance.llaLocation, e) < 10 && geofs.addonAircraft.aircraftBackup() == 0) {
+if (geofs.animation.values.gearPosition == 0 && geofs.addonAircraft.landed == 0 && geofs.animation.values.groundContact == 1 && geofs.addonAircraft.distance(geofs.aircraft.instance.llaLocation, e) < 10) {
    console.log("Hooking detected")
    geofs.aircraft.instance.rigidBody.applyCentralImpulse([geofs.addonAircraft.resolveForceVector(geofs.addonAircraft.stopForce, geofs.animation.values.heading360)[1], geofs.addonAircraft.resolveForceVector(geofs.addonAircraft.stopForce, geofs.animation.values.heading360)[0], geofs.addonAircraft.resolveForceVector(geofs.addonAircraft.stopForce, geofs.animation.values.heading360)[2]])
 }
