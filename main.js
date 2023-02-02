@@ -66,7 +66,7 @@ geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
 //flight control system
    if (geofs.animation.values.cobraMode == 1) {
-geofs.aircraft.instance.definition.parts[2].area = 30
+geofs.aircraft.instance.definition.parts[2].area = 25
 geofs.aircraft.instance.definition.parts[12].stalls = true
 geofs.aircraft.instance.definition.parts[13].stalls = true
 if (geofs.animation.values.airbrakesTarget > 0) {
