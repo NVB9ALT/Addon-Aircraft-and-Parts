@@ -63,7 +63,9 @@ geofs.aircraft.instance.definition.parts[46].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[46].animations[1].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[0].ratio = 0.069;
 geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
-//flight control system
+//fcs (alpha and G limiter) and paddle switch
+//Push controls forwards 0.02
+//aoa > 0.09? or check if "stall" is lit
    if (geofs.animation.values.cobraMode == 1) {
 geofs.aircraft.instance.definition.parts[2].area = 25
 geofs.aircraft.instance.definition.parts[12].stalls = true
