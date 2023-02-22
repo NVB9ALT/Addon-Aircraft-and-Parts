@@ -107,25 +107,6 @@ geofs.aircraft.instance.engines[0].thrust = 50000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 87000
 geofs.aircraft.instance.engines[1].thrust = 50000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
-//Stuff from aircraft-fixes.js
-   geofs.aircraft.instance.definition.parts[46].animations[2] = {};
-	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
-	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
-	geofs.aircraft.instance.definition.parts[46].animations[2].value = "roll";
-	geofs.aircraft.instance.definition.parts[46].animations[2].ratio = -10;
-	geofs.aircraft.instance.definition.parts[46].animations[2].currentValue = null;
-	geofs.aircraft.instance.definition.parts[46].animations[2].rotationMethod = function(a) {
-      this._rotation = M33.rotationZ(this._rotation, a)
-   };
-   geofs.aircraft.instance.definition.parts[51].animations[2] = {};
-	geofs.aircraft.instance.definition.parts[51].animations[2].type = "rotate";
-	geofs.aircraft.instance.definition.parts[51].animations[2].axis = "Z";
-	geofs.aircraft.instance.definition.parts[51].animations[2].value = "roll";
-	geofs.aircraft.instance.definition.parts[51].animations[2].ratio = -10;
-	geofs.aircraft.instance.definition.parts[51].animations[2].currentValue = null;
-	geofs.aircraft.instance.definition.parts[51].animations[2].rotationMethod = function(a) {
-      this._rotation = M33.rotationZ(this._rotation, a)
-   };
 //Maintaining 1:1 TWR
 geofs.aircraft.instance.definition.mass = 17000
 audio.soundplayer.setRate(geofs.aircraft.instance.definition.sounds[3].id, 0.5) //Sound pitch modification
