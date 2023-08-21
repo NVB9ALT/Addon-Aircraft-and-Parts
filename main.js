@@ -542,31 +542,17 @@ geofs.aircraft.instance.definition.parts[51].animations[1].ratio = 0.069;
 //TF30s having no thrust unless you go really fast
 //mass is 25300 by default, try increasing it so thrust can increase as well
 geofs.aircraft.instance.definition.mass = 35000
-   if (geofs.animation.values.mach >= 1.75 && geofs.animation.values.slipball <= 1 && geofs.animation.values.slipball >= -1) {
+   if (geofs.animation.values.mach >= 1.75) {
 geofs.aircraft.instance.engines[0].thrust = 85000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 190000
 geofs.aircraft.instance.engines[1].thrust = 85000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 190000
-	} else if (geofs.animation.values.slipball <= 1 && geofs.animation.values.slipball >= -1) {
+	} else {
 geofs.aircraft.instance.engines[0].thrust = 85000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 145000
 geofs.aircraft.instance.engines[1].thrust = 85000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 145000
    }
-//the infamous compressor stalls
-	if (geofs.animation.values.kias > 50) {
-if (geofs.animation.values.slipball >= 1) { //right
-   geofs.aircraft.instance.engines[0].thrust = 500
-	geofs.aircraft.instance.engines[0].afterBurnerThrust = 1000
-}
-if (geofs.animation.values.slipball <= -1) { //left
-   geofs.aircraft.instance.engines[1].thrust = 500
-	geofs.aircraft.instance.engines[1].afterBurnerThrust = 1000
-}
-	}
-//Jamming the throttle up or down at high AoA will randomly stall either engine until AoA is reduced
-//geofs.animation.values.throttleJerk will, for 10 ms, return 1 if the throttle was aggressively moved
-//geofs.animation.values.aoa is not the best here, sub out forceDirection for rigidBody vector in AOA calcs
 
 //attempt at landing gear adjustment
 geofs.aircraft.instance.definition.parts[17].collisionPoints[0][2] = -0.8
