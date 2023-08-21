@@ -16,7 +16,7 @@ Current features:
 - MiG-21 addon aircraft. X key toggles WEP/drop tank, with the tank on max power is standard AB, with the tank off max power is WEP thrust.
 - Morane-Saulnier Type G addon aircraft.
 - Lockheed F-117 addon aircraft. Does NOT have stealth.
-- F-14A Tomcat. Differs from the F-14B due to a more accurate flight model and weaker engines (unless you go faster than Mach 1.75, at which point the engines get a lot more powerful - just like the real F-14A). Is prone to compressor stalls at large sideslip angles, as well as flat spins.
+- F-14A Tomcat. Differs from the F-14B due to a more accurate flight model and weaker engines (unless you go faster than Mach 1.75, at which point the engines get a lot more powerful - just like the real F-14A). Is prone to flat spins.
 
 Aircraft to be probably added in the future:</br>
 - Su-33 addon aircraft. Will include folding wing animation and tailhook. (This will likely be released pretty close to the time the F/A-18C gets its tailhook).
