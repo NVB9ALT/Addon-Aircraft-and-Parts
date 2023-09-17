@@ -353,7 +353,7 @@ if (geofs.animation.values.aoa > 14) {
 if (controls.optionalAnimatedPart.target == 0) {
 	geofs.aircraft.instance.engine.afterBurnerThrust = 90000
 } else {
-   geofs.aircraft.instance.engine.afterBurnerThrust = 70000
+   geofs.aircraft.instance.engine.afterBurnerThrust = 60000
 }
 	geofs.aircraft.instance.definition.parts[12].liftFactor = 5
 geofs.aircraft.instance.setup.instruments = {
