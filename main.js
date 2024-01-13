@@ -37,12 +37,6 @@ geofs.addonAircraft.landed = 0
 console.log("Airborne")
 	}
 }
-document.querySelectorAll('[data-aircraft]').forEach(function(e){
-   var elemName = e.outerText;
-    if (elemName.includes("Su-35")) {
-	    e.innerHTML = '<img src="images/planes/su35.png">Sukhoi Su-35 Flanker-E<div data-aircraft="18" data-livery="0"><img src="images/planes/su35_0.png">Akula 35</div><div data-aircraft="18" data-livery="2"><img src="images/planes/su35_2.png">Russia Bort 06</div><div data-aircraft="18" data-livery="3"><img src="images/planes/su35_3.png">Russia Bort 901</div>';
-    }
-});
 //-----F/A-18C Hornet-----------------------------------------------------------------------------------------------------
 //adding the button
 geofs.addonAircraft.runFA18 = function(){
